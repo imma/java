@@ -16,7 +16,7 @@ function bootstrap {
 
   case "$(uname -s)" in
     Darwin)
-      hdiutil attach "$tmp_dmg"
+      hdiutil attach "$tmp_jdk"
       app compile pkg "/Volumes/JDK 8 Update 74/JDK 8 Update 74.pkg"
       hdiutil detach "/Volumes/JDK 8 Update 74"
       ;;
