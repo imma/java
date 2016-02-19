@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  case "$(uname -s)" in
+    Darwin)
+      if [[ "$(java -version 2>&1 | head -1 | cut -d'"' -f2)" == "1.8.0_74" ]]; then
+        return 1
+      fi
+      ;;
+
+    *)
+      if [[ -x "$(type -P javac)" ]]; then
+        return 1
+      fi
+      ;;
+  esac
+
+  return 0
+}
+
+source sub "$BASH_SOURCE" "$@"

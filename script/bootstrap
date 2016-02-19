@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
+
+  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-macosx-x64.dmg'
+  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz'
+
+  local tmp_jdk="$(mktemp -t XXXXXX)"
+  trap "$(printf "rm -f '%q'" "$tmp_jdk")" EXIT
+  local url_jdk="url_jdk_$(uname -s)"
+  curl -sS -L --cookie "$cookie" -o "$tmp_jdk" "${!url_jdk}"
+
+  case "$(uname -s)" in
+    Darwin)
+      hdiutil attach "$tmp_dmg"
+      app compile pkg "/Volumes/JDK 8 Update 74/JDK 8 Update 74.pkg"
+      hdiutil detach "/Volumes/JDK 8 Update 74"
+      ;;
+    Linux)
+      tar xvfz "$tmp_jdk"
+      ;;
+  esac
+}
+
+bootstrap
