@@ -3,6 +3,12 @@
 function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   PATH="$shome/bin:$shome/exec:$PATH"
+
+  case "$(uname -s)" in
+    Linux)
+      PATH="$shome/vendor/jdk1.8.0_74/bin:$PATH"
+      ;;
+  esac
 }
 
 profile

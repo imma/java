@@ -21,7 +21,10 @@ function bootstrap {
       hdiutil detach "/Volumes/JDK 8 Update 74"
       ;;
     Linux)
+      mkdir -p vendor
+      pushd vendor
       tar xvfz "$tmp_jdk"
+      popd
       ;;
   esac
 }
