@@ -11,12 +11,12 @@ function bootstrap {
 
   local url_jdk="url_jdk_$(uname -s)"
   local fnm_jdk="$(basename "${!url_jdk}")"
-  cache curl "$fnm_jdk" "${!url_jdk}" -sL -L --cookie "$cookie"
+  cache curl "$fnm_jdk" "${!url_jdk}" --cookie "$cookie"
 
   case "$(uname -s)" in
     Darwin)
       hdiutil attach "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      app compile pkg "/Volumes/JDK 8 Update 74/JDK 8 Update 74.pkg"
+      block compile pkg "/Volumes/JDK 8 Update 74/JDK 8 Update 74.pkg"
       hdiutil detach "/Volumes/JDK 8 Update 74"
       ;;
     Linux)
