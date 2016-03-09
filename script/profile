@@ -7,6 +7,7 @@ function profile {
   case "$(uname -s)" in
     Linux)
       PATH="$shome/vendor/jdk1.8.0_74/bin:$PATH"
+      export JAVA_HOME="$shome/vendor/jdk1.8.0_74"
       ;;
   esac
 }
