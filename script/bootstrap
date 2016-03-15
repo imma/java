@@ -4,6 +4,8 @@ function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
+  mkdir -p "${BASEBOX_CACHE}/cache/ivy2" "${BASEBOX_CACHE}/cache/m2"
+
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
   local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-macosx-x64.dmg'
