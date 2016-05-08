@@ -8,8 +8,8 @@ function bootstrap {
 
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
-  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-macosx-x64.dmg'
-  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz'
+  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-macosx-x64.dmg'
+  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz'
 
   local url_jdk="url_jdk_$(uname -s)"
   local fnm_jdk="$(basename "${!url_jdk}")"
@@ -18,8 +18,8 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       hdiutil attach "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      block compile pkg "/Volumes/JDK 8 Update 74/JDK 8 Update 74.pkg"
-      hdiutil detach "/Volumes/JDK 8 Update 74"
+      block compile pkg "/Volumes/JDK 8 Update 92/JDK 8 Update 92.pkg"
+      hdiutil detach "/Volumes/JDK 8 Update 92"
       ;;
     Linux)
       mkdir -p vendor
