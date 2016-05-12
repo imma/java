@@ -25,6 +25,7 @@ function bootstrap {
       mkdir -p vendor
       pushd vendor
       tar xvfz "${BASEBOX_CACHE}/curl/$fnm_jdk"
+      ln -nfs "jdk1.8.0_92" "jdk"
       popd
       ;;
   esac
