@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_java="$(java -version 2>&1 | awk 'NR == 1 { print }' | cut -d'"' -f2)"
+  jq -n --arg java "$ver_java" '{java: $java}'
+}
+
+version "$@"
