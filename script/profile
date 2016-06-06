@@ -4,12 +4,10 @@ function profile {
   local shome="${_java_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
-  case "$(uname -s)" in
-    Linux)
-      PATH="$shome/vendor/jdk/bin:$PATH"
-      export JAVA_HOME="$shome/vendor/jdk"
-      ;;
-  esac
+  if [[ -d "$shome/vendor/jdk/bin" ]]; then
+    PATH="$shome/vendor/jdk/bin:$PATH"
+    export JAVA_HOME="$shome/vendor/jdk"
+  fi
 }
 
 profile
