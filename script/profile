@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function profile {
+function _java_profile {
   local shome="${_java_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
@@ -10,4 +10,4 @@ function profile {
   fi
 }
 
-profile
+_java_profile
