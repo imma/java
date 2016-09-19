@@ -8,8 +8,8 @@ function bootstrap {
 
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
-  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-macosx-x64.dmg'
-  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz'
+  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-macosx-x64.dmg'
+  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz'
 
   local url_jdk="url_jdk_$(uname -s)"
   local fnm_jdk="$(basename "${!url_jdk}")"
