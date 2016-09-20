@@ -18,14 +18,14 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       hdiutil attach "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      block compile pkg "/Volumes/JDK 8 Update 92/JDK 8 Update 92.pkg"
-      hdiutil detach "/Volumes/JDK 8 Update 92"
+      block compile pkg "/Volumes/JDK 8 Update 102/JDK 8 Update 102.pkg"
+      hdiutil detach "/Volumes/JDK 8 Update 102"
       ;;
     Linux)
       mkdir -p vendor
       pushd vendor
       tar xvfz "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      ln -nfs "jdk1.8.0_92" "jdk"
+      ln -nfs "jdk1.8.0_102" "jdk"
       popd
       ;;
   esac
