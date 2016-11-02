@@ -8,8 +8,8 @@ function bootstrap {
 
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
-  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-macosx-x64.dmg'
-  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz'
+  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-macosx-x64.dmg'
+  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz'
 
   local url_jdk="url_jdk_$(uname -s)"
   local fnm_jdk="$(basename "${!url_jdk}")"
@@ -18,14 +18,14 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       hdiutil attach "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      block compile pkg "/Volumes/JDK 8 Update 102/JDK 8 Update 102.pkg"
-      hdiutil detach "/Volumes/JDK 8 Update 102"
+      block compile pkg "/Volumes/JDK 8 Update 112/JDK 8 Update 112.pkg"
+      hdiutil detach "/Volumes/JDK 8 Update 112"
       ;;
     Linux)
       mkdir -p vendor
       pushd vendor
       tar xvfz "${BASEBOX_CACHE}/curl/$fnm_jdk"
-      ln -nfs "jdk1.8.0_102" "jdk"
+      ln -nfs "jdk1.8.0_112" "jdk"
       popd
       ;;
   esac
