@@ -4,8 +4,6 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  mkdir -p "${BASEBOX_CACHE}/cache/ivy2" "${BASEBOX_CACHE}/cache/m2"
-
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
   local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u112-b16/jdk-8u112-macosx-x64.dmg'
@@ -17,14 +15,14 @@ function bootstrap {
 
   case "$(uname -s)" in
     Darwin)
-      hdiutil attach "${BASEBOX_CACHE}/curl/$fnm_jdk"
+      hdiutil attach "/data/cache/curl/$fnm_jdk"
       block compile pkg "/Volumes/JDK 8 Update 112/JDK 8 Update 112.pkg"
       hdiutil detach "/Volumes/JDK 8 Update 112"
       ;;
     Linux)
       mkdir -p vendor
       pushd vendor
-      tar xfz "${BASEBOX_CACHE}/curl/$fnm_jdk"
+      tar xfz "/data/cache/curl/$fnm_jdk"
       ln -nfs "jdk1.8.0_112" "jdk"
       popd
       ;;
