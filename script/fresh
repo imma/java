@@ -4,7 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ "$(java -version 2>&1 | head -1 | cut -d'"' -f2)" == "1.8.0_112" ]]; then
+  if [[ "$($shome/script/version | jq -r '.java')" != "$JAVA_VERSION" ]]; then
     return 1
   fi
 

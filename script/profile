@@ -4,6 +4,8 @@ function _java_profile {
   local shome="${_java_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
+  JAVA_VERSION='1.8.0_112'
+
   if [[ -d "$shome/vendor/jdk/bin" ]]; then
     PATH="$shome/vendor/jdk/bin:$PATH"
     export JAVA_HOME="$shome/vendor/jdk"

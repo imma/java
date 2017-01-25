@@ -15,9 +15,7 @@ function bootstrap {
 
   case "$(uname -s)" in
     Darwin)
-      hdiutil attach "/data/cache/curl/$fnm_jdk"
-      block compile pkg "/Volumes/JDK 8 Update 112/JDK 8 Update 112.pkg"
-      hdiutil detach "/Volumes/JDK 8 Update 112"
+      brew cask install java
       ;;
     Linux)
       mkdir -p vendor
