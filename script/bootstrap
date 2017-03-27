@@ -6,7 +6,8 @@ function bootstrap {
 
   local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
 
-  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz'
+  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u112-b16/jdk-8u112-macosx-x64.dmg'
+  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz'
 
   local url_jdk="url_jdk_$(uname -s)"
   local fnm_jdk="$(basename "${!url_jdk}")"
@@ -20,7 +21,7 @@ function bootstrap {
       mkdir -p vendor
       pushd vendor
       tar xfz "/data/cache/curl/$fnm_jdk"
-      ln -nfs "jdk-8u112-b16" "jdk"
+      ln -nfs "jdk1.8.0_112" "jdk"
       popd
       ;;
   esac
