@@ -4,14 +4,7 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local cookie='oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com'
-
-  local url_jdk_Darwin='http://download.oracle.com/otn-pub/java/jdk/8u112-b16/jdk-8u112-macosx-x64.dmg'
   local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz'
-
-  local url_jdk="url_jdk_$(uname -s)"
-  local fnm_jdk="$(basename "${!url_jdk}")"
-  cache curl "$fnm_jdk" "${!url_jdk}" --cookie "$cookie"
 
   case "$(uname -s)" in
     Darwin)
@@ -20,7 +13,7 @@ function bootstrap {
     Linux)
       mkdir -p vendor
       pushd vendor
-      tar xfz "/data/cache/curl/$fnm_jdk"
+      tar xfz "/data/cache/nodist/$fnm_jdk"
       ln -nfs "jdk1.8.0_112" "jdk"
       popd
       ;;
