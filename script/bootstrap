@@ -4,8 +4,6 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local url_jdk_Linux='http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz'
-
   case "$(uname -s)" in
     Darwin)
       brew cask install java
@@ -13,7 +11,7 @@ function bootstrap {
     Linux)
       mkdir -p vendor
       pushd vendor
-      tar xfz "/data/cache/nodist/$fnm_jdk"
+      tar xfz "/data/cache/nodist/jdk-8u112-linux-x64.tar.gz"
       ln -nfs "jdk1.8.0_112" "jdk"
       popd
       ;;
