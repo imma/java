@@ -11,8 +11,7 @@ function bootstrap {
     Linux)
       mkdir -p vendor
       pushd vendor
-      tar xfz "/data/cache/nodist/jdk-8u112-linux-x64.tar.gz"
-      ln -nfs "jdk1.8.0_112" "jdk"
+      tar xfz "/data/cache/nodist/jdk-8u131-linux-x64.tar.gz"
       popd
       ;;
   esac
