@@ -4,8 +4,8 @@ function _java_profile {
   local shome="${_java_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
-  JAVA_VERSION='1.8.0_131'
-  JAVA_URL='http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131'
+  JAVA_VERSION='1.8.0_141'
+  JAVA_URL='http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141'
 
   if [[ -d "$shome/vendor/jdk${JAVA_VERSION}/bin" ]]; then
     PATH="$shome/vendor/jdk${JAVA_VERSION}/bin:$PATH"
