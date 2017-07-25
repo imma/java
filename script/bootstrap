@@ -11,13 +11,13 @@ function bootstrap {
     Linux)
       local platform='-linux-x64.tar.gz'
       
-      if [[ ! -f "/data/cache/nodist/${JAVA_VERSION}$platform" ]]; then
-        wget -c -O "/data/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
+      if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
+        wget -c -O "${DATA}/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
       fi
 
       mkdir -p vendor
       pushd vendor
-      tar xfz "/data/cache/nodist/${JAVA_VERSION}$platform"
+      tar xfz "${DATA}/cache/nodist/${JAVA_VERSION}$platform"
       popd
       ;;
   esac
