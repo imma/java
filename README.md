@@ -1,1 +1,1 @@
-Visit http://defn.sh/java/ or open `docs/index.html`
+content/java.md
