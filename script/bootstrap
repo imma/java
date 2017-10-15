@@ -4,11 +4,11 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  case "$(uname -s)" in
+  case "${DISTRIB_ID}" in
     Darwin)
       brew cask install java
       ;;
-    Linux)
+    Ubuntu|Amazon)
       local platform='-linux-x64.tar.gz'
       
       if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
