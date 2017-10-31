@@ -7,6 +7,7 @@ function bootstrap {
   case "${DISTRIB_ID}" in
     Darwin)
       local platform='osx-x64_bin.dmg'
+      brew install wget
       ;;
     *)
       local platform='linux-x64_bin.tar.gz'
