@@ -6,15 +6,25 @@ function bootstrap {
 
   case "${DISTRIB_ID}" in
     Darwin)
-      brew cask install java
+      local platform='osx-x64_bin.dmg'
       ;;
     *)
-      local platform='-linux-x64.tar.gz'
-      
-      if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
-        wget -c -O "${DATA}/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
-      fi
+      local platform='linux-x64_bin.tar.gz'
+      ;;
+  esac
+  
+  set -x 
+  if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
+    wget -c -O "${DATA}/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
+  fi
 
+  case "${DISTRIB_ID}" in
+    Darwin)
+      block compile dmg "${DATA}/cache/nodist/${JAVA_VERSION}$platform" \
+        "JDK 9.0.1" \
+        "JDK 9.0.1.pkg"
+      ;;
+    *)
       mkdir -p "$shome/vendor"
       pushd "$shome/vendor"
       tar xfz "${DATA}/cache/nodist/${JAVA_VERSION}$platform"
