@@ -20,7 +20,7 @@ function bootstrap {
 
   case "${DISTRIB_ID}" in
     Darwin)
-      true
+      block compile dmg "${DATA}/cache/nodist/${JAVA_VERSION}$platform" 'JDK 8 Update 151' 'JDK 8 Update 151.pkg'
       ;;
     *)
       mkdir -p "$shome/vendor"
