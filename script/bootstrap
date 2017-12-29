@@ -19,6 +19,14 @@ function bootstrap {
   fi
 
   case "${DISTRIB_ID}" in
+    Linux)
+      curl -O https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk -k -L
+      ${NOSUDO} sudo apk add --allow-untrusted ./glibc-2.26-r0.apk
+      rm -f ./glibc-2.26-r0.apk
+      ;;
+  esac
+
+  case "${DISTRIB_ID}" in
     Darwin)
       block compile dmg "${DATA}/cache/nodist/${JAVA_VERSION}$platform" 'JDK 8 Update 151' 'JDK 8 Update 151.pkg'
       ;;
