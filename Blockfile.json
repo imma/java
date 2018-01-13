@@ -1,7 +1,8 @@
 {
   "require": [
     "jq",
-    "homebrew"
+    "homebrew",
+    "cache"
   ],
   "versions": {}
 }
