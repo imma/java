@@ -19,7 +19,7 @@ function bootstrap {
   fi
 
   case "${DISTRIB_ID}" in
-    Linux)
+    Alpine)
       curl -O https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk -k -L
       ${NOSUDO} sudo apk add --allow-untrusted ./glibc-2.26-r0.apk
       rm -f ./glibc-2.26-r0.apk
