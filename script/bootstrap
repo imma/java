@@ -7,19 +7,14 @@ function bootstrap {
   case "${DISTRIB_ID}" in
     Darwin)
       brew install wget
-      local platform='macosx-x64.dmg'
+      brew cask install java
+      return
       ;;
     *)
       local platform='linux-x64.tar.gz'
       ;;
   esac
       
-  ${NOSUDO} sudo chown ubuntu:ubuntu "${DATA}"
-  mkdir -p "${DATA}/cache/nodist"
-  if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
-    wget -c -O "${DATA}/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
-  fi
-
   case "${DISTRIB_ID}" in
     Alpine)
       curl -O https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk -k -L
@@ -28,17 +23,16 @@ function bootstrap {
       ;;
   esac
 
-  case "${DISTRIB_ID}" in
-    Darwin)
-      block compile dmg "${DATA}/cache/nodist/${JAVA_VERSION}$platform" 'JDK 8 Update 162' 'JDK 8 Update 162.pkg'
-      ;;
-    *)
-      mkdir -p "$shome/vendor"
-      pushd "$shome/vendor"
-      tar xfz "${DATA}/cache/nodist/${JAVA_VERSION}$platform"
-      popd
-      ;;
-  esac
+  ${NOSUDO} sudo chown ubuntu:ubuntu "${DATA}"
+  mkdir -p "${DATA}/cache/nodist"
+  if [[ ! -f "${DATA}/cache/nodist/${JAVA_VERSION}$platform" ]]; then
+    wget -c -O "${DATA}/cache/nodist/${JAVA_VERSION}$platform" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${JAVA_URL}${platform}"
+  fi
+
+  mkdir -p "$shome/vendor"
+  pushd "$shome/vendor"
+  tar xfz "${DATA}/cache/nodist/${JAVA_VERSION}$platform"
+  popd
 }
 
 bootstrap
