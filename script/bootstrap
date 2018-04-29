@@ -10,11 +10,14 @@ function bootstrap {
       brew cask install java
       return
       ;;
-    *)
-      local platform='linux-x64.tar.gz'
+    Ubuntu)
+      ${NOSUDO} sudo apt-get install -y default-sdk
+      return
       ;;
   esac
       
+  local platform='linux-x64.tar.gz'
+
   case "${DISTRIB_ID}" in
     Alpine)
       curl -O https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk -k -L
