@@ -11,7 +11,7 @@ function bootstrap {
       return
       ;;
     Ubuntu)
-      ${NOSUDO} sudo apt-get install -y default-sdk
+      ${NOSUDO} sudo apt-get install -y openjdk-8-jdk-headless
       return
       ;;
   esac
